@@ -1,10 +1,10 @@
 const Gameboard = (function () {
   let board = ["", "", "", "", "", "", "", "", ""];
-  const resetBoard = () => board.map((cell) => (cell = ""));
+  const resetBoard = () => board.map(() => "");
   return { board, resetBoard };
 })();
 
-function Player(x_mark) {
-  const mark = x_mark ? "X" : "O";
+function Player(isFirst) {
+  const mark = isFirst ? "X" : "O";
   return { mark };
 }
