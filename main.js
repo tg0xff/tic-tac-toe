@@ -6,5 +6,10 @@ const Gameboard = (function () {
 
 function Player(isFirst) {
   const mark = isFirst ? "X" : "O";
-  return { mark };
+  const play = (cell_index) => {
+    if (Gameboard.board[cell_index] === "") {
+      Gameboard.board[cell_index] = mark;
+    }
+  };
+  return { mark, play };
 }
