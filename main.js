@@ -7,6 +7,7 @@ const Gameboard = (function () {
     }
   };
   const checkWinner = (mark) => {
+    // Current player won.
     if (
       (board[0] === mark && board[1] === mark && board[2] === mark) ||
       (board[3] === mark && board[4] === mark && board[5] === mark) ||
@@ -16,9 +17,11 @@ const Gameboard = (function () {
     ) {
       return 1;
     }
+    // Draw.
     if (!board.includes("")) {
       return -1;
     }
+    // There's no winner yet.
     return 0;
   };
   return { resetBoard, putMark };
