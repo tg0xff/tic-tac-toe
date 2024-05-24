@@ -1,4 +1,4 @@
-function Game() {
+const Game = (function () {
   let firstPlayer;
   let player;
   let cpu;
@@ -16,7 +16,7 @@ function Game() {
     }
   };
   return { start, play };
-}
+})();
 
 function Player(isFirst, name) {
   const mark = isFirst ? "X" : "O";
