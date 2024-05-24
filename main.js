@@ -9,6 +9,9 @@ const Game = (function () {
     firstPlayer = Math.random() <= 0.5;
     player = Player(firstPlayer, name);
     cpu = Player(!firstPlayer, "CPU");
+    if (!firstPlayer) {
+      cpuPlay();
+    }
   };
   const play = (cell_index) => {
     if (gameActive && Gameboard.checkCell(cell_index)) {
