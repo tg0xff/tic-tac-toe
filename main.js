@@ -6,9 +6,9 @@ function Game() {
   return {};
 }
 
-function Player(isFirst) {
+function Player(isFirst, name) {
   const mark = isFirst ? "X" : "O";
-  return { mark };
+  return { mark, name };
 }
 
 const Gameboard = (function () {
