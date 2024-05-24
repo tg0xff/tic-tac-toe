@@ -25,19 +25,7 @@ const Game = (function () {
     Gameboard.putMark(cell_index, player.mark);
     Gameboard.printBoard();
     let gameResult = Gameboard.checkWinner(player.mark);
-    switch (gameResult) {
-      case 0:
-        cpuPlay();
-        break;
-      case 1:
-        console.log(`${player.name} wins!`);
-        gameActive = false;
-        break;
-      case -1:
-        console.log("It's a draw!");
-        gameActive = false;
-        break;
-    }
+    checkResults(true, player.name, gameResult);
   };
   const cpuPlay = () => {
     let choice;
@@ -47,9 +35,17 @@ const Game = (function () {
     Gameboard.putMark(choice, cpu.mark);
     Gameboard.printBoard();
     let gameResult = Gameboard.checkWinner(cpu.mark);
-    switch (gameResult) {
+    checkResults(false, cpu.name, gameResult);
+  };
+  const checkResults = (human, name, result) => {
+    switch (result) {
+      case 0:
+        if (human) {
+          cpuPlay();
+        }
+        break;
       case 1:
-        console.log(`${cpu.name} wins!`);
+        console.log(`${name} wins!`);
         gameActive = false;
         break;
       case -1:
