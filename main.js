@@ -10,7 +10,11 @@ function Game() {
     player = Player(firstPlayer, name);
     cpu = Player(!firstPlayer, "CPU");
   };
-  const play = (cell_index) => Gameboard.putMark(cell_index, player.mark);
+  const play = (cell_index) => {
+    if (gameActive) {
+      Gameboard.putMark(cell_index, player.mark);
+    }
+  };
   return { start, play };
 }
 
