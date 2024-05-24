@@ -1,12 +1,14 @@
 function Game() {
-  const firstPlayer = Math.random() <= 0.5;
-  const cpu = Player(!firstPlayer, "CPU");
+  let firstPlayer;
   let player;
+  let cpu;
   let gameActive = false;
   const start = (name) => {
     gameActive = true;
     Gameboard.resetBoard();
+    firstPlayer = Math.random() <= 0.5;
     player = Player(firstPlayer, name);
+    cpu = Player(!firstPlayer, "CPU");
   };
   const play = (cell_index) => Gameboard.putMark(cell_index, player.mark);
   return { start, play };
