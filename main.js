@@ -1,9 +1,13 @@
 function Game() {
   const firstPlayer = Math.random() <= 0.5;
-  const player = Player(firstPlayer);
   const cpu = Player(!firstPlayer, "CPU");
+  let player;
+  const start = (name) => {
+    Gameboard.resetBoard();
+    player = Player(firstPlayer, name);
+  };
   const play = (cell_index) => Gameboard.putMark(cell_index, player.mark);
-  return {};
+  return { start, play };
 }
 
 function Player(isFirst, name) {
