@@ -14,23 +14,29 @@ const Game = (function () {
     }
   };
   const play = (cell_index) => {
-    if (gameActive && Gameboard.checkCell(cell_index)) {
-      Gameboard.putMark(cell_index, player.mark);
-      Gameboard.printBoard();
-      let gameResult = Gameboard.checkWinner(player.mark);
-      switch (gameResult) {
-        case 0:
-          cpuPlay();
-          break;
-        case 1:
-          console.log(`${player.name} wins!`);
-          gameActive = false;
-          break;
-        case -1:
-          console.log("It's a draw!");
-          gameActive = false;
-          break;
-      }
+    if (!gameActive) {
+      console.error("Start a new game to play.");
+      return;
+    }
+    if (!Gameboard.checkCell(cell_index)) {
+      console.error("Pick a valid cell index.");
+      return;
+    }
+    Gameboard.putMark(cell_index, player.mark);
+    Gameboard.printBoard();
+    let gameResult = Gameboard.checkWinner(player.mark);
+    switch (gameResult) {
+      case 0:
+        cpuPlay();
+        break;
+      case 1:
+        console.log(`${player.name} wins!`);
+        gameActive = false;
+        break;
+      case -1:
+        console.log("It's a draw!");
+        gameActive = false;
+        break;
     }
   };
   const cpuPlay = () => {
