@@ -34,25 +34,22 @@ const Game = (function () {
     }
   };
   const cpuPlay = () => {
-    let keepGoing = true;
-    while (keepGoing) {
-      let choice = Math.round(8 * Math.random());
-      if (Gameboard.checkCell(choice)) {
-        keepGoing = false;
-        Gameboard.putMark(choice, cpu.mark);
-        Gameboard.printBoard();
-        let gameResult = Gameboard.checkWinner(cpu.mark);
-        switch (gameResult) {
-          case 1:
-            console.log("You lose!");
-            gameActive = false;
-            break;
-          case -1:
-            console.log("It's a draw!");
-            gameActive = false;
-            break;
-        }
-      }
+    let choice;
+    do {
+      choice = Math.round(8 * Math.random());
+    } while (!Gameboard.checkCell(choice));
+    Gameboard.putMark(choice, cpu.mark);
+    Gameboard.printBoard();
+    let gameResult = Gameboard.checkWinner(cpu.mark);
+    switch (gameResult) {
+      case 1:
+        console.log("You lose!");
+        gameActive = false;
+        break;
+      case -1:
+        console.log("It's a draw!");
+        gameActive = false;
+        break;
     }
   };
   return { start, play };
