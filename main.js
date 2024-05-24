@@ -25,6 +25,18 @@ function Player(isFirst, name) {
 
 const Gameboard = (function () {
   let board = ["", "", "", "", "", "", "", "", ""];
+  const printBoard = () => {
+    let line = "";
+    for (let i = 0; i < board.length; i++) {
+      if (i === 2 || i === 5 || i === 8) {
+        line += board[i];
+        console.log(line);
+        line = "";
+      } else {
+        line += board[i] + "|";
+      }
+    }
+  };
   const resetBoard = () => board.map(() => "");
   const putMark = (index, mark) => {
     if (board[index] === "") {
