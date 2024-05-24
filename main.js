@@ -11,8 +11,17 @@ const Game = (function () {
     cpu = Player(!firstPlayer, "CPU");
   };
   const play = (cell_index) => {
-    if (gameActive) {
+    if (gameActive && Gameboard.checkCell(cell_index)) {
       Gameboard.putMark(cell_index, player.mark);
+    }
+  };
+  const cpuPlay = () => {
+    let keepGoing = true;
+    while (keepGoing) {
+      let choice = Math.round(8 * Math.random());
+      if (Gameboard.checkCell(choice)) {
+        Gameboard.putMark(choice, cpu.mark);
+      }
     }
   };
   return { start, play };
@@ -38,11 +47,8 @@ const Gameboard = (function () {
     }
   };
   const resetBoard = () => board.map(() => "");
-  const putMark = (index, mark) => {
-    if (board[index] === "") {
-      board[index] = mark;
-    }
-  };
+  const checkCell = (index) => board[index] === "";
+  const putMark = (index, mark) => board[index] = mark;
   const checkWinner = (mark) => {
     // Current player won.
     if (
@@ -61,5 +67,5 @@ const Gameboard = (function () {
     // There's no winner yet.
     return 0;
   };
-  return { resetBoard, putMark };
+  return { resetBoard, putMark, checkCell };
 })();
