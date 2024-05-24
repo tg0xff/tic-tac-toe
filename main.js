@@ -23,7 +23,7 @@ const Game = (function () {
           cpuPlay();
           break;
         case 1:
-          console.log("You won!");
+          console.log(`${player.name} wins!`);
           gameActive = false;
           break;
         case -1:
@@ -43,7 +43,7 @@ const Game = (function () {
     let gameResult = Gameboard.checkWinner(cpu.mark);
     switch (gameResult) {
       case 1:
-        console.log("You lose!");
+        console.log(`${cpu.name} wins!`);
         gameActive = false;
         break;
       case -1:
