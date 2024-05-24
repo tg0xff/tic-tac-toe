@@ -2,7 +2,9 @@ function Game() {
   const firstPlayer = Math.random() <= 0.5;
   const cpu = Player(!firstPlayer, "CPU");
   let player;
+  let gameActive = false;
   const start = (name) => {
+    gameActive = true;
     Gameboard.resetBoard();
     player = Player(firstPlayer, name);
   };
