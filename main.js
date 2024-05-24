@@ -1,3 +1,9 @@
+function Player(isFirst) {
+  const mark = isFirst ? "X" : "O";
+  const play = (cell_index) => Gameboard.putMark(cell_index, mark);
+  return { mark, play };
+}
+
 const Gameboard = (function () {
   let board = ["", "", "", "", "", "", "", "", ""];
   const resetBoard = () => board.map(() => "");
@@ -27,8 +33,3 @@ const Gameboard = (function () {
   return { resetBoard, putMark };
 })();
 
-function Player(isFirst) {
-  const mark = isFirst ? "X" : "O";
-  const play = (cell_index) => Gameboard.putMark(cell_index, mark);
-  return { mark, play };
-}
