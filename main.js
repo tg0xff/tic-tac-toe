@@ -3,13 +3,14 @@ const Game = (function () {
   let player;
   let cpu;
   let gameActive = false;
+  const gameboard = Gameboard();
   const start = (name) => {
     if (name === undefined) {
       console.error("Enter a valid player name.");
       return;
     }
     gameActive = true;
-    Gameboard.resetBoard();
+    gameboard.resetBoard();
     firstPlayer = Math.random() <= 0.5;
     player = Player(firstPlayer, name);
     cpu = Player(!firstPlayer, "CPU");
@@ -23,23 +24,23 @@ const Game = (function () {
       console.error("Start a new game to play.");
       return;
     }
-    if (!Gameboard.checkCell(cell_index)) {
+    if (!gameboard.checkCell(cell_index)) {
       console.error("Pick a valid cell index.");
       return;
     }
-    Gameboard.putMark(cell_index, player.mark);
-    Gameboard.printBoard(player.name);
-    let gameResult = Gameboard.checkWinner(player.mark);
+    gameboard.putMark(cell_index, player.mark);
+    gameboard.printBoard(player.name);
+    let gameResult = gameboard.checkWinner(player.mark);
     checkResults(true, player.name, gameResult);
   };
   const cpuPlay = () => {
     let choice;
     do {
       choice = Math.round(8 * Math.random());
-    } while (!Gameboard.checkCell(choice));
-    Gameboard.putMark(choice, cpu.mark);
-    Gameboard.printBoard(cpu.name);
-    let gameResult = Gameboard.checkWinner(cpu.mark);
+    } while (!gameboard.checkCell(choice));
+    gameboard.putMark(choice, cpu.mark);
+    gameboard.printBoard(cpu.name);
+    let gameResult = gameboard.checkWinner(cpu.mark);
     checkResults(false, cpu.name, gameResult);
   };
   const checkResults = (human, name, result) => {
@@ -67,10 +68,10 @@ function Player(isFirst, name) {
   return { mark, name };
 }
 
-const Gameboard = (function () {
+function Gameboard() {
   let board = ["", "", "", "", "", "", "", "", ""];
   const printBoard = (name) => {
-    console.log(`${name}'s move:`)
+    console.log(`${name}'s move:`);
     let line = "";
     for (let i = 0; i < board.length; i++) {
       let cell = board[i] ? board[i] : " ";
@@ -129,4 +130,4 @@ const Gameboard = (function () {
     return 0;
   };
   return { resetBoard, putMark, checkCell, printBoard, checkWinner };
-})();
+}
