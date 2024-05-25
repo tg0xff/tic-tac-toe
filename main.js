@@ -4,6 +4,10 @@ const Game = (function () {
   let cpu;
   let gameActive = false;
   const start = (name) => {
+    if (name === undefined) {
+      console.error("Enter a valid player name.")
+      return;
+    }
     gameActive = true;
     Gameboard.resetBoard();
     firstPlayer = Math.random() <= 0.5;
