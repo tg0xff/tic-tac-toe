@@ -28,7 +28,7 @@ const Game = (function () {
       return;
     }
     Gameboard.putMark(cell_index, player.mark);
-    Gameboard.printBoard();
+    Gameboard.printBoard(player.name);
     let gameResult = Gameboard.checkWinner(player.mark);
     checkResults(true, player.name, gameResult);
   };
@@ -38,7 +38,7 @@ const Game = (function () {
       choice = Math.round(8 * Math.random());
     } while (!Gameboard.checkCell(choice));
     Gameboard.putMark(choice, cpu.mark);
-    Gameboard.printBoard();
+    Gameboard.printBoard(cpu.name);
     let gameResult = Gameboard.checkWinner(cpu.mark);
     checkResults(false, cpu.name, gameResult);
   };
@@ -69,7 +69,8 @@ function Player(isFirst, name) {
 
 const Gameboard = (function () {
   let board = ["", "", "", "", "", "", "", "", ""];
-  const printBoard = () => {
+  const printBoard = (name) => {
+    console.log(`${name}'s move:`)
     let line = "";
     for (let i = 0; i < board.length; i++) {
       let cell = board[i] ? board[i] : " ";
