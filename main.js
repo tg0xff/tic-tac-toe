@@ -89,17 +89,26 @@ const Gameboard = (function () {
   };
   const checkCell = (index) => board[index] === "";
   const putMark = (index, mark) => (board[index] = mark);
+  const checkContiguousCells = (mark, ...cells) => {
+    for (let i = 0; i < cells.length; i++) {
+      const cell = cells[i];
+      if (board[cell] !== mark) {
+        return false;
+      }
+    }
+    return true;
+  };
   const checkWinner = (mark) => {
     // Current player won.
     if (
-      (board[0] === mark && board[1] === mark && board[2] === mark) ||
-      (board[3] === mark && board[4] === mark && board[5] === mark) ||
-      (board[6] === mark && board[7] === mark && board[8] === mark) ||
-      (board[0] === mark && board[3] === mark && board[6] === mark) ||
-      (board[1] === mark && board[4] === mark && board[7] === mark) ||
-      (board[2] === mark && board[5] === mark && board[8] === mark) ||
-      (board[0] === mark && board[4] === mark && board[8] === mark) ||
-      (board[2] === mark && board[4] === mark && board[6] === mark)
+      checkContiguousCells(mark, 0, 1, 2) ||
+      checkContiguousCells(mark, 3, 4, 5) ||
+      checkContiguousCells(mark, 6, 7, 8) ||
+      checkContiguousCells(mark, 0, 3, 6) ||
+      checkContiguousCells(mark, 1, 4, 7) ||
+      checkContiguousCells(mark, 2, 5, 8) ||
+      checkContiguousCells(mark, 0, 4, 8) ||
+      checkContiguousCells(mark, 2, 4, 6)
     ) {
       return 1;
     }
