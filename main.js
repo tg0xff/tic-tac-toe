@@ -72,12 +72,13 @@ const Gameboard = (function () {
   const printBoard = () => {
     let line = "";
     for (let i = 0; i < board.length; i++) {
+      let cell = board[i] ? board[i] : " ";
       if (i === 2 || i === 5 || i === 8) {
-        line += board[i];
+        line += cell;
         console.log(line);
         line = "";
       } else {
-        line += board[i] + "|";
+        line += cell + "|";
       }
     }
   };
