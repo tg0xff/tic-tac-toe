@@ -101,13 +101,21 @@ const Gameboard = (function () {
   const checkWinner = (mark) => {
     // Current player won.
     if (
+      // Top row.
       checkContiguousCells(mark, 0, 1, 2) ||
+      // Middle row.
       checkContiguousCells(mark, 3, 4, 5) ||
+      // Bottom row.
       checkContiguousCells(mark, 6, 7, 8) ||
+      // First column.
       checkContiguousCells(mark, 0, 3, 6) ||
+      // Second column.
       checkContiguousCells(mark, 1, 4, 7) ||
+      // Third column.
       checkContiguousCells(mark, 2, 5, 8) ||
+      // '\' diagonal.
       checkContiguousCells(mark, 0, 4, 8) ||
+      // '/' diagonal.
       checkContiguousCells(mark, 2, 4, 6)
     ) {
       return 1;
