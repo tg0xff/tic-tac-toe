@@ -3,6 +3,7 @@ const Game = (function () {
   let player;
   let cpu;
   let gameActive = false;
+  let gameTurns = 0;
   const gameboard = Gameboard();
   const start = (name) => {
     if (name === undefined) {
@@ -10,6 +11,7 @@ const Game = (function () {
       return;
     }
     gameActive = true;
+    gameTurns = 0;
     gameboard.resetBoard();
     firstPlayer = Math.random() <= 0.5;
     player = Player(firstPlayer, name);
@@ -28,20 +30,26 @@ const Game = (function () {
       console.error("Pick a valid cell index.");
       return;
     }
+    gameTurns++;
     gameboard.putMark(cell_index, player.mark);
     gameboard.printBoard(player.name);
-    let gameResult = gameboard.checkWinner(player.mark);
-    checkResults(true, player.name, gameResult);
+    if (gameTurns > 4) {
+      let gameResult = gameboard.checkWinner(player.mark);
+      checkResults(true, player.name, gameResult);
+    }
   };
   const cpuPlay = () => {
+    gameTurns++;
     let choice;
     do {
       choice = Math.round(8 * Math.random());
     } while (!gameboard.checkCell(choice));
     gameboard.putMark(choice, cpu.mark);
     gameboard.printBoard(cpu.name);
-    let gameResult = gameboard.checkWinner(cpu.mark);
-    checkResults(false, cpu.name, gameResult);
+    if (gameTurns > 4) {
+      let gameResult = gameboard.checkWinner(cpu.mark);
+      checkResults(false, cpu.name, gameResult);
+    }
   };
   const checkResults = (human, name, result) => {
     switch (result) {
