@@ -9,6 +9,7 @@ const Game = (function () {
     firstPlayer = Math.random() <= 0.5;
     player = Player(firstPlayer, name);
     cpu = Player(!firstPlayer, "CPU");
+    console.log("A new game has been started.");
     if (!firstPlayer) {
       cpuPlay();
     }
