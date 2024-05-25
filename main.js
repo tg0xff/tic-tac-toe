@@ -34,7 +34,7 @@ const Game = (function () {
     gameboard.putMark(cell_index, player.mark);
     gameboard.printBoard(player.name);
     if (gameTurns > 4) {
-      let gameResult = gameboard.checkWinner(player.mark);
+      const gameResult = gameboard.checkWinner(player.mark);
       checkResults(true, player.name, gameResult);
     }
   };
@@ -47,7 +47,7 @@ const Game = (function () {
     gameboard.putMark(choice, cpu.mark);
     gameboard.printBoard(cpu.name);
     if (gameTurns > 4) {
-      let gameResult = gameboard.checkWinner(cpu.mark);
+      const gameResult = gameboard.checkWinner(cpu.mark);
       checkResults(false, cpu.name, gameResult);
     }
   };
@@ -82,7 +82,7 @@ function Gameboard() {
     console.log(`${name}'s move:`);
     let line = "";
     for (let i = 0; i < board.length; i++) {
-      let cell = board[i] ? board[i] : " ";
+      const cell = board[i] ? board[i] : " ";
       if (i === 2 || i === 5 || i === 8) {
         line += cell;
         console.log(line);
