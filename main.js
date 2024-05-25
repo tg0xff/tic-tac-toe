@@ -95,6 +95,9 @@ const Gameboard = (function () {
       (board[0] === mark && board[1] === mark && board[2] === mark) ||
       (board[3] === mark && board[4] === mark && board[5] === mark) ||
       (board[6] === mark && board[7] === mark && board[8] === mark) ||
+      (board[0] === mark && board[3] === mark && board[6] === mark) ||
+      (board[1] === mark && board[4] === mark && board[7] === mark) ||
+      (board[2] === mark && board[5] === mark && board[8] === mark) ||
       (board[0] === mark && board[4] === mark && board[8] === mark) ||
       (board[2] === mark && board[4] === mark && board[6] === mark)
     ) {
