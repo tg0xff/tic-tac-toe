@@ -5,7 +5,7 @@ const Game = (function () {
   let gameActive = false;
   const start = (name) => {
     if (name === undefined) {
-      console.error("Enter a valid player name.")
+      console.error("Enter a valid player name.");
       return;
     }
     gameActive = true;
