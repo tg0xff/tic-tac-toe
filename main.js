@@ -81,7 +81,11 @@ const Gameboard = (function () {
       }
     }
   };
-  const resetBoard = () => board.map(() => "");
+  const resetBoard = () => {
+    for (let i = 0; i < board.length; i++) {
+      board[i] = "";
+    }
+  };
   const checkCell = (index) => board[index] === "";
   const putMark = (index, mark) => (board[index] = mark);
   const checkWinner = (mark) => {
