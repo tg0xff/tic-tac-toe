@@ -48,3 +48,35 @@ input[type="text"] {
   align-items: baseline;
   gap: 4px;
 }
+
+.game-grid {
+  max-width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.game-grid button {
+  color: #222;
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+}
+
+.game-grid .centre-cell {
+  border: 12px solid #222;
+}
+
+.game-grid .top-cell,
+.game-grid .bottom-cell {
+  border-right: 12px solid #222;
+  border-left: 12px solid #222;
+}
+
+.game-grid .left-cell,
+.game-grid .right-cell {
+  border-top: 12px solid #222;
+  border-bottom: 12px solid #222;
+}
