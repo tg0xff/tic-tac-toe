@@ -12,7 +12,3 @@ body {
   justify-content: center;
   gap: 4px;
 }
-
-.controls form {
-  display: inline;
-}
