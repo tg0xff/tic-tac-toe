@@ -5,3 +5,14 @@
 body {
   margin: 0;
 }
+
+.controls {
+  margin: 22px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.controls form {
+  display: inline;
+}
