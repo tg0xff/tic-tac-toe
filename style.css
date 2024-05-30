@@ -25,6 +25,10 @@ button:active {
   background-color: #222;
 }
 
+button:disabled {
+  opacity: 0.75;
+}
+
 input[type="text"] {
   font-family: inherit;
   font-size: inherit;
