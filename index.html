@@ -5,5 +5,22 @@
     <title>Tic Tac Toe</title>
     <script src="main.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div>
+      <input id="player-name" name="player_name" type="text" autofocus />
+      <button type="button">Start a new game</button>
+      <button type="button" disabled>Reset game</button>
+    </div>
+    <div id="game-grid" class="game-grid">
+      <button data-cell="0"></button>
+      <button class="top-cell" data-cell="1"></button>
+      <button data-cell="2"></button>
+      <button class="left-cell" data-cell="3"></button>
+      <button class="centre-cell" data-cell="4"></button>
+      <button class="right-cell" data-cell="5"></button>
+      <button data-cell="6"></button>
+      <button class="bottom-cell" data-cell="7"></button>
+      <button data-cell="8"></button>
+    </div>
+  </body>
 </html>
