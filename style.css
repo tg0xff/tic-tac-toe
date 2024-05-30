@@ -3,12 +3,27 @@
 }
 
 body {
+  font-family: system-ui, sans-serif;
   margin: 0;
 }
 
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: #222;
+  background-color: #fff;
+  border: 2px solid #222;
+  border-radius: 6px;
+}
+
 .controls {
+  font-size: 1.05rem;
   margin: 22px;
   display: flex;
   justify-content: center;
   gap: 4px;
+}
+
+.controls > button {
+  align-self: end;
 }
