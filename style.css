@@ -33,6 +33,7 @@ input[type="text"] {
   border: 2px solid #222;
   border-radius: 4px;
   padding: 2px 4px;
+  max-width: 160px;
 }
 
 .controls {
