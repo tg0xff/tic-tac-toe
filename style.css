@@ -16,6 +16,16 @@ button {
   border-radius: 6px;
 }
 
+input[type="text"] {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  appearance: none;
+  border: 2px solid #222;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
 .controls {
   font-size: 1.05rem;
   margin: 22px;
