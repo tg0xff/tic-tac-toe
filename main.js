@@ -6,8 +6,8 @@ const GameUI = (function () {
     switch (e.target.getAttribute("id")) {
       case "new-game":
         e.preventDefault();
-        cells.forEach((item) => item.textContent = "");
         if (form.reportValidity()) {
+          cells.forEach((item) => (item.textContent = ""));
           const name = form["player_name"].value;
           Game.start(name);
         }
