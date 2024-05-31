@@ -25,8 +25,11 @@ button:active {
   background-color: #222;
 }
 
-button:disabled {
+button:disabled,
+button:disabled:active {
   opacity: 0.75;
+  color: #222;
+  background-color: #fff;
 }
 
 input[type="text"] {
