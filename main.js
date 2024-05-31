@@ -7,6 +7,17 @@ const GameUI = (function () {
         e.preventDefault();
         makeNewGame();
         break;
+      case "cell-0":
+      case "cell-1":
+      case "cell-2":
+      case "cell-3":
+      case "cell-4":
+      case "cell-5":
+      case "cell-6":
+      case "cell-7":
+      case "cell-8":
+        play(e);
+        break;
     }
   };
   body.addEventListener("click", click);
@@ -16,6 +27,10 @@ const GameUI = (function () {
       Game.start(name);
       form.reset();
     }
+  };
+  const play = function (e) {
+    const index = +e.target.getAttribute("id").slice(-1);
+    Game.play(index);
   };
   const drawMark = function (index, mark) {
     const cell = body.querySelector(`#cell-${index}`);
