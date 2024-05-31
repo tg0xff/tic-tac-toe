@@ -7,20 +7,17 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <div class="controls">
-      <form>
-        <label for="player-name">Player Name:</label>
-        <input
-          id="player-name"
-          name="player_name"
-          type="text"
-          autofocus
-          required
-        />
-        <button id="new-game">Start a new game</button>
-      </form>
-      <button id="reset-game" type="button" disabled>Reset game</button>
-    </div>
+    <form class="controls">
+      <label for="player-name">Player Name:</label>
+      <input
+        id="player-name"
+        name="player_name"
+        type="text"
+        autofocus
+        required
+      />
+      <button id="new-game">Start a new game</button>
+    </form>
     <div id="game-grid" class="game-grid">
       <button id="cell-0"></button>
       <button id="cell-1" class="top-cell"></button>
