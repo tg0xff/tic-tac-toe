@@ -5,7 +5,10 @@ const GameUI = (function () {
     switch (e.target.getAttribute("id")) {
       case "new-game":
         e.preventDefault();
-        makeNewGame();
+        if (form.reportValidity()) {
+          const name = form["player_name"].value;
+          Game.start(name);
+        }
         break;
       case "cell-0":
       case "cell-1":
@@ -16,22 +19,12 @@ const GameUI = (function () {
       case "cell-6":
       case "cell-7":
       case "cell-8":
-        play(e);
+        const index = +e.target.getAttribute("id").slice(-1);
+        Game.play(index);
         break;
     }
   };
   body.addEventListener("click", click);
-  const makeNewGame = function () {
-    if (form.reportValidity()) {
-      const name = form["player_name"].value;
-      Game.start(name);
-      form.reset();
-    }
-  };
-  const play = function (e) {
-    const index = +e.target.getAttribute("id").slice(-1);
-    Game.play(index);
-  };
   const drawMark = function (index, mark) {
     const cell = body.querySelector(`#cell-${index}`);
     cell.textContent = mark;
