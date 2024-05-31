@@ -59,6 +59,7 @@ input[type="text"] {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  position: relative;
 }
 
 .game-grid button {
@@ -83,4 +84,16 @@ input[type="text"] {
 .game-grid .right-cell {
   border-top: 12px solid #222;
   border-bottom: 12px solid #222;
+}
+
+.end-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #222;
+  background-color: #fff;
+  border: 3px solid #222;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px #222;
 }
