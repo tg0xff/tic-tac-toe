@@ -1,7 +1,8 @@
 const GameUI = (function () {
   const body = document.querySelector("body");
   const form = body.querySelector("form");
-  const cells = body.querySelectorAll(".game-grid button");
+  const grid = body.querySelector(".game-grid")
+  const cells = grid.querySelectorAll("button");
   const click = function (e) {
     switch (e.target.getAttribute("id")) {
       case "new-game":
@@ -10,6 +11,10 @@ const GameUI = (function () {
           cells.forEach((item) => (item.textContent = ""));
           const name = form["player_name"].value;
           Game.start(name);
+          const msg = grid.querySelector(".end-message");
+          if (msg) {
+            msg.parentElement.removeChild(msg);
+          }
         }
         break;
       case "cell-0":
@@ -31,7 +36,13 @@ const GameUI = (function () {
     const cell = body.querySelector(`#cell-${index}`);
     cell.textContent = mark;
   };
-  return { drawMark };
+  const drawMessage = function (msg) {
+    const div = document.createElement("div");
+    div.classList.add("end-message");
+    div.textContent = msg;
+    grid.appendChild(div);
+  };
+  return { drawMark, drawMessage };
 })();
 
 const Game = (function () {
@@ -82,6 +93,7 @@ const Game = (function () {
     checkResults(false, cpu.name, gameResult);
   };
   const checkResults = (human, name, result) => {
+    let msg = "";
     switch (result) {
       case 0:
         if (human) {
@@ -89,11 +101,15 @@ const Game = (function () {
         }
         break;
       case 1:
-        console.log(`${name} wins!`);
+        msg = `${name} wins!`;
+        console.log(msg);
+        GameUI.drawMessage(msg);
         gameActive = false;
         break;
       case -1:
-        console.log("It's a draw!");
+        msg = "It's a draw!";
+        console.log(msg);
+        GameUI.drawMessage(msg);
         gameActive = false;
         break;
     }
