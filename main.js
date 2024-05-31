@@ -1,7 +1,6 @@
 const GameUI = (function () {
   const body = document.querySelector("body");
   const form = body.querySelector("form");
-  body.addEventListener("click", click);
   const click = function (e) {
     switch (e.target.getAttribute("id")) {
       case "new-game":
@@ -10,9 +9,12 @@ const GameUI = (function () {
         break;
     }
   };
+  body.addEventListener("click", click);
   const makeNewGame = function () {
     if (form.reportValidity()) {
-      Game.start(form["player_name"].value);
+      const name = form["player_name"].value;
+      Game.start(name);
+      form.reset();
     }
   };
 })();
