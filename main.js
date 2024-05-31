@@ -1,10 +1,12 @@
 const GameUI = (function () {
   const body = document.querySelector("body");
   const form = body.querySelector("form");
+  const cells = body.querySelectorAll(".game-grid button");
   const click = function (e) {
     switch (e.target.getAttribute("id")) {
       case "new-game":
         e.preventDefault();
+        cells.forEach((item) => item.textContent = "");
         if (form.reportValidity()) {
           const name = form["player_name"].value;
           Game.start(name);
