@@ -17,6 +17,11 @@ const GameUI = (function () {
       form.reset();
     }
   };
+  const drawMark = function (index, mark) {
+    const cell = body.querySelector(`#cell-${index}`);
+    cell.textContent = mark;
+  };
+  return { drawMark };
 })();
 
 const Game = (function () {
@@ -66,6 +71,7 @@ const Game = (function () {
       choice = Math.round(8 * Math.random());
     } while (!gameboard.checkCell(choice));
     gameboard.putMark(choice, cpu.mark);
+    GameUI.drawMark(choice, cpu.mark);
     gameboard.printBoard(cpu.name);
     if (gameTurns > 4) {
       const gameResult = gameboard.checkWinner(cpu.mark);
